@@ -23,8 +23,7 @@ public final class ArmorBreakEvent {
 
     @SubscribeEvent
     public static void onCrumblingRemoved(MobEffectEvent.Remove event) {
-        if (!event.getEntity().level().isClientSide() && CalamityCuriosConfig.ENABLE_ARMOR_BREAK_TWEAKS.get()
-                && event.getEffect().value() == CCEffects.CRUMBLING.get()) {
+        if (!event.getEntity().level().isClientSide() && CalamityCuriosConfig.ENABLE_ARMOR_BREAK_TWEAKS.get() && event.getEffect().value() == CCEffects.CRUMBLING.get()) {
             event.setCanceled(true);
         }
     }
@@ -35,21 +34,19 @@ public final class ArmorBreakEvent {
             return;
         }
         float amount = event.getAmount();
-        if (!Float.isFinite(amount) || amount <= 0 || amount >= Float.MAX_VALUE
-                || !(event.getSource().getEntity() instanceof LivingEntity attacker)) {
+        if (!Float.isFinite(amount) || amount <= 0 || amount >= Float.MAX_VALUE || !(event.getSource().getEntity() instanceof LivingEntity attacker)) {
             return;
         }
 
         HurtCounter counter = player.getData(CCAttachments.HURT_COUNTER);
-        double contribution = attacker.getType().is(Tags.EntityTypes.BOSSES) ? amount : amount / 2.0;
+        double contribution = attacker.getType().getTags().anyMatch((tagKey) -> tagKey.equals(Tags.EntityTypes.BOSSES)) ? amount : amount / 2.0;
         counter.setHurtCounter(counter.getHurtCounter() + contribution);
         counter.setHurtSinceLastDamage(CalamityCuriosConfig.CONFIG_CRUMBLING.fadeTimer.get());
     }
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || !player.isAlive() || player.tickCount % 20 != 0
-                || !CalamityCuriosConfig.ENABLE_ARMOR_BREAK_TWEAKS.get()) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || !player.isAlive() || player.tickCount % 20 != 0 || !CalamityCuriosConfig.ENABLE_ARMOR_BREAK_TWEAKS.get()) {
             return;
         }
 
