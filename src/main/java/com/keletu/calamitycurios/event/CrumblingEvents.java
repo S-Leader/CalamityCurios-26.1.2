@@ -17,20 +17,18 @@ import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = CalamityCurios.MODID)
-public final class ArmorBreakEvent {
-    private ArmorBreakEvent() {
-    }
+public final class CrumblingEvents {
 
     @SubscribeEvent
     public static void onCrumblingRemoved(MobEffectEvent.Remove event) {
-        if (!event.getEntity().level().isClientSide() && CalamityCuriosConfig.ENABLE_ARMOR_BREAK_TWEAKS.get() && event.getEffect().value() == CCEffects.CRUMBLING.get()) {
+        if (!event.getEntity().level().isClientSide() && CalamityCuriosConfig.ENABLE_CRUMBLING_TWEAKS.get() && event.getEffect().value() == CCEffects.CRUMBLING.get()) {
             event.setCanceled(true);
         }
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerHurt(LivingIncomingDamageEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || !CalamityCuriosConfig.ENABLE_ARMOR_BREAK_TWEAKS.get()) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || !CalamityCuriosConfig.ENABLE_CRUMBLING_TWEAKS.get()) {
             return;
         }
         float amount = event.getAmount();
@@ -46,7 +44,7 @@ public final class ArmorBreakEvent {
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || !player.isAlive() || player.tickCount % 20 != 0 || !CalamityCuriosConfig.ENABLE_ARMOR_BREAK_TWEAKS.get()) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || !player.isAlive() || player.tickCount % 20 != 0 || !CalamityCuriosConfig.ENABLE_CRUMBLING_TWEAKS.get()) {
             return;
         }
 

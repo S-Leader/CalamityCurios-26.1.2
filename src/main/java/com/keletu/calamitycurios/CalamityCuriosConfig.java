@@ -9,7 +9,7 @@ public class CalamityCuriosConfig {
 
     public static final ModConfigSpec COMMON_SPEC;
 
-    public static final ModConfigSpec.BooleanValue ENABLE_ARMOR_BREAK_TWEAKS;
+    public static final ModConfigSpec.BooleanValue ENABLE_CRUMBLING_TWEAKS;
     public static final ConfigCalamityBaubles CONFIG_CALAMITY;
     public static final ConfigArmorCrumbling CONFIG_CRUMBLING;
     public static final ConfigTheCommunity CONFIG_COMMUNITY;
@@ -18,7 +18,7 @@ public class CalamityCuriosConfig {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
         builder.comment("General Options").push("general");
-        ENABLE_ARMOR_BREAK_TWEAKS = builder.comment("Enable damage accumulation, gradual recovery and resistance to cleansing for Armor Crumbling.").define("ArmorBreakTweaks", false);
+        ENABLE_CRUMBLING_TWEAKS = builder.comment("Enable damage accumulation, gradual recovery and resistance to cleansing for Armor Crumbling.").define("CrumblingTweaks", false);
         builder.pop();
 
         builder.comment("Config Options For Calamity Baubles").push("Calamity Baubles Config");
@@ -132,7 +132,7 @@ public class CalamityCuriosConfig {
 
             crabClawReflectDamage = builder.comment("how much damage reflect to attacker when player worn CrabClaw (percentage)").defineInRange("CrabClaw Damage Reflection", 0.25D, 0.0D, 1.0D);
 
-            crabClawArmorWeaknessTime = builder.comment("how long 'armor break' effect applies to attacker when player worn CrabClaw (second)").defineInRange("CrabClaw ArmorWeakness Time", 5, 0, 32676);
+            crabClawArmorWeaknessTime = builder.comment("how long crumbling effect applies to attacker when player worn CrabClaw (second)").defineInRange("CrabClaw ArmorWeakness Time", 5, 0, 32676);
 
             baroclawAttackBonus = builder.comment("how much damage will baroclaw add (percentage)").defineInRange("Baroclaw Attack Bonus", 0.10D, 0.0D, 10.0D);
 
@@ -140,7 +140,7 @@ public class CalamityCuriosConfig {
 
             baroclawReflectDamage = builder.comment("how much damage reflect to attacker when player worn Baroclaw (percentage)").defineInRange("Baroclaw Damage Reflection", 0.35D, 0.0D, 1.0D);
 
-            baroclawArmorWeaknessTime = builder.comment("how long 'armor break' effect applies to attacker when player worn Baroclaw (second)").defineInRange("Baroclaw ArmorWeakness Time", 5, 0, 32676);
+            baroclawArmorWeaknessTime = builder.comment("how long crumbling effect applies to attacker when player worn Baroclaw (second)").defineInRange("Baroclaw ArmorWeakness Time", 5, 0, 32676);
 
             giantShellArmor = builder.comment("how much armor points will giant shell add").defineInRange("Giant Shell Armor", 6.0D, 0.0D, 100.0D);
 
@@ -174,7 +174,7 @@ public class CalamityCuriosConfig {
 
             theAbsorberReflectDamageMinimum = builder.comment("how much minimum damage will reflection when player worn the absorber").defineInRange("Absorber Minimum Damage Reflection", 3.5D, 0.0D, 32676.0D);
 
-            theAbsorberWeaknessTime = builder.comment("how long 'armor break' effect applies to attacker when player worn absorber (second)").defineInRange("Absorber ArmorWeakness Time", 10, 0, 32676);
+            theAbsorberWeaknessTime = builder.comment("how long crumbling effect applies to attacker when player worn absorber (second)").defineInRange("Absorber ArmorWeakness Time", 10, 0, 32676);
 
             theAbsorberWitherTime = builder.comment("how long wither effect applies to attacker when player worn absorber (second)").defineInRange("Absorber Wither Time", 10, 0, 32676);
 
