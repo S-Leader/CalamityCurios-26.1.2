@@ -1,0 +1,52 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:using_item",
+    "on_true": {
+      "type": "minecraft:select",
+      "property": "minecraft:display_context",
+      "cases": [
+        {
+          "when": [
+            "firstperson_righthand",
+            "firstperson_lefthand",
+            "thirdperson_righthand",
+            "thirdperson_lefthand",
+            "head",
+            "fixed",
+            "ground"
+          ],
+          "model": {
+            "type": "minecraft:model",
+            "model": "calamitycurios:item/shell_shield_blocking"
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "calamitycurios:item/giant_shell_item"
+      }
+    },
+    "on_false": {
+      "type": "minecraft:select",
+      "property": "minecraft:display_context",
+      "cases": [
+        {
+          "when": [
+            "gui",
+            "ground",
+            "fixed"
+          ],
+          "model": {
+            "type": "minecraft:model",
+            "model": "calamitycurios:item/giant_shell_item"
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "calamitycurios:item/giant_shell_model"
+      }
+    }
+  }
+}

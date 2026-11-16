@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "hhh",
+    "bpg",
+    "ddd"
+  ],
+  "key": {
+    "h": "minecraft:blaze_powder",
+    "d": "minecraft:glowstone_dust",
+    "b": "calamitycurios:cleansing_jelly",
+    "p": "calamitycurios:life_jelly",
+    "g": "calamitycurios:vital_jelly"
+  },
+  "result": {
+    "id": "calamitycurios:grand_gelatin"
+  }
+}

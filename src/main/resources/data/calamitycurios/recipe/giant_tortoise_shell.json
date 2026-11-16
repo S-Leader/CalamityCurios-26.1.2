@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ccc",
+    "crc",
+    "ccc"
+  ],
+  "key": {
+    "c": "minecraft:turtle_scute",
+    "r": "calamitycurios:giant_shell"
+  },
+  "result": {
+    "id": "calamitycurios:giant_tortoise_shell",
+    "count": 1
+  }
+}

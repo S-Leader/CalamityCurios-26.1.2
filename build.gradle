@@ -1,0 +1,36 @@
+import net.neoforged.nfrtgradle.NeoFormRuntimeTask
+
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+group = 'com.keletu.calamitycurios'
+version = '1.0.0'
+base { archivesName = 'calamitycurios-26.1.2' }
+java { toolchain.languageVersion = JavaLanguageVersion.of(25) }
+repositories {
+    maven { url = 'https://maven.theillusivec4.top' }
+}
+neoForge {
+    version = '26.1.2.126'
+    mods { calamitycurios { sourceSet sourceSets.main } }
+    runs {
+        client { client(); gameDirectory = file('run/client') }
+        server { server(); programArgument '--nogui'; gameDirectory = file('run/server') }
+    }
+}
+dependencies {
+    implementation 'top.theillusivec4.curios:curios-neoforge:15.0.0+26.1.2'
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-Xmaxerrs', '1000', '-proc:none']
+}
+tasks.named('jar') {
+    manifest { attributes 'Implementation-Version': project.version, 'MixinConfigs': 'calamitycurios.mixins.json' }
+}
+tasks.withType(NeoFormRuntimeTask).configureEach {
+    javaExecutable = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(25)
+    }.map { it.executablePath.asFile.absolutePath }
+}

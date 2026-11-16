@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.keletu.calamitycurios.mixins",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "MixinDamageCalculations"
+  ],
+  "client": [
+    "CommunityHeartsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
