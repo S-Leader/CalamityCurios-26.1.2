@@ -8,6 +8,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -68,7 +69,7 @@ public class AbsorberCalamityCuriosEvents {
         Entity sourceEntity = event.getSource().getEntity();
 
         if (sourceEntity instanceof LivingEntity attacker && directEntity == attacker) {
-            if (!event.getSource().is(DamageTypes.THORNS)) {
+            if (!event.getSource().is(DamageTypeTags.AVOIDS_GUARDIAN_THORNS) && !event.getSource().is(DamageTypes.THORNS)) {
                 float reflectedDamage = Math.max(event.getAmount() * CalamityCuriosConfig.CONFIG_CALAMITY.theAbsorberReflectDamage.get().floatValue(), CalamityCuriosConfig.CONFIG_CALAMITY.theAbsorberReflectDamageMinimum.get().floatValue());
 
                 attacker.hurtServer((ServerLevel) player.level(), player.damageSources().thorns(player), reflectedDamage);

@@ -6,6 +6,7 @@ import com.keletu.calamitycurios.baubles.ItemBaroClaw;
 import com.keletu.calamitycurios.init.CCEffects;
 import com.keletu.calamitycurios.init.CCItems;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -41,7 +42,7 @@ public class CrabEvents {
             return;
         }
 
-        if (event.getSource().is(DamageTypes.THORNS)) {
+        if (event.getSource().is(DamageTypeTags.AVOIDS_GUARDIAN_THORNS) || event.getSource().is(DamageTypes.THORNS)) {
             return;
         }
 
@@ -76,7 +77,7 @@ public class CrabEvents {
 
         DamageSource source = event.getSource();
 
-        if (source.is(DamageTypes.THORNS)) {
+        if (source.is(DamageTypeTags.AVOIDS_GUARDIAN_THORNS) || source.is(DamageTypes.THORNS)) {
             return;
         }
 
